@@ -1,0 +1,35 @@
+{
+  "name": "statistical-bin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "update-questions": "node scripts/generate-question-imports.js",
+    "create-question": "node scripts/create-question.js"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.19.4",
+    "highlight.js": "^11.11.1",
+    "katex": "^0.16.22",
+    "next": "15.3.2",
+    "prismjs": "^1.30.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-katex": "^3.1.0",
+    "react-latex": "^2.0.0",
+    "react-latex-next": "^3.0.0",
+    "react-syntax-highlighter": "^15.6.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
