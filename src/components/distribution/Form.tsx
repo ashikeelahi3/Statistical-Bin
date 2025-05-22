@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 function DistributionForm({ onSubmit }: { onSubmit: (data: { mu: number; sigma: number; x: number }) => void }) {
-  const [mu, setMu] = useState(0);
-  const [sigma, setSigma] = useState(1);
-  const [x, setX] = useState(0);
+  const [mu, setMu] = React.useState(0);
+  const [sigma, setSigma] = React.useState(1);
+  const [x, setX] = React.useState(0);
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit({ mu, sigma, x });
-  };
+  // Debounced update to prevent too many updates and reduce re-renders
+  const debouncedSubmit = useCallback(() => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    
+    debounceTimerRef.current = setTimeout(() => {
+      onSubmit({ mu, sigma, x });
+      debounceTimerRef.current = null;
+    }, 100);
+  }, [mu, sigma, x, onSubmit]);
+
+  // Update values when they change with debouncing
+  useEffect(() => {
+    debouncedSubmit();
+    
+    // Clean up the timer
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [debouncedSubmit]);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex items-center space-x-4 bg-gray-100 p-2 rounded-lg shadow-md"
-    >
+    <div className="flex items-center space-x-4 bg-gray-100 p-2 rounded-lg shadow-md">
       <div className="flex items-center">
         <label htmlFor="mu" className="font-medium text-gray-700 text-sm md:text-base mr-1">μ:</label>
         <input
@@ -31,7 +48,8 @@ function DistributionForm({ onSubmit }: { onSubmit: (data: { mu: number; sigma: 
           type="number"
           id="sigma"
           value={sigma}
-          onChange={(e) => setSigma(Number(e.target.value))}
+          onChange={(e) => setSigma(Number(e.target.value) || 0.1)} // Prevent 0 or negative values
+          min="0.1"
           className="border border-gray-300 rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
@@ -45,13 +63,7 @@ function DistributionForm({ onSubmit }: { onSubmit: (data: { mu: number; sigma: 
           className="border border-gray-300 rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
       </div>
-      <button
-        type="submit"
-        className="bg-blue-600 text-white text-sm md:text-base py-1 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500"
-      >
-        Submit
-      </button>
-    </form>
+    </div>
   );
 }
 
