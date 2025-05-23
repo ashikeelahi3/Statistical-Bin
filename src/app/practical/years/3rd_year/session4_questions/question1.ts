@@ -3,18 +3,18 @@ import { Question } from '@/app/practical/types';
 // Question 1 for 4th year, session1
 export const question: Question = {
   id: 1,
-  text: "Suppose you are attempting to model the likelihood of early termination from counseling in a sample of $$n = 45$$ clients at a community mental health center. The dependent variable in the model is 'Terminate' (coded as: 1 = terminated early, 0 = did not terminate early). Three predictors in the model are:",
+  text: "Suppose you are attempting to model the likelihood of early termination from counseling in a sample of $n = 45$ clients at a community mental health center. The dependent variable in the model is 'Terminate' (coded as: 1 = terminated early, 0 = did not terminate early). Three predictors in the model are: <br/> 1. Gender (coded as: 0 = Male, 1 = Female), <br/> 2. Income (coded as: 1 = low income, 2 = medium income, 3 = high income), <br/> 3. Symptom severity (continuous scale). <br/> <b>Run a suitable regression model and interpret the role Of each predictor in the model.</b>",
   colabLinks: {
-    python: "https://colab.research.google.com/drive/your-python-link",
-    r: "https://rstudio.cloud/project/your-r-link",
-    cpp: "https://godbolt.org/your-cpp-link"
+    python: "",
+    r: "",
+    cpp: ""
   },
   youTubeLink: {
     r: "",
-    python: "https://youtu.be/bVP8AsD6KSY?si=mtHemEEE0XIXxZaK",
+    python: "",
     cpp:"",
-    spss: "https://youtu.be/HUeg53G8FVg?si=knA7TsXBR_4OQjhC",
-    excel: "https://youtu.be/kLEX4nk5Nrk?si=oiuH-ffaZUGONSxH"
+    spss: "",
+    excel: ""
   },
   dataset: {
     headers: ["SL", "Terminate", "Symptom of severity", "Gender", "Wealth Index"],
@@ -65,32 +65,13 @@ export const question: Question = {
       [44, 1, 13, 0, 3],
       [45, 1, 3, 0, 1]
     ],
-    description: "Dataset containing information on early termination from counseling for 45 clients, including symptom severity, gender, and wealth index."
+    description: "Dataset containing information on early termination from counseling for 45 clients, including symptom severity, gender, and wealth index.",
+    pdfLink: "",
+    spssLink: ""
   },
   codeSnippets: {
-    python: `# Your Python code here
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Example code
-data = [1, 2, 3, 4, 5]
-print("Mean:", np.mean(data))
-`,
-    r: `# Your R code here
-data <- c(1, 2, 3, 4, 5)
-cat("Mean:", mean(data), "\n")
-`,
-    cpp: `// Your C++ code here
-#include <iostream>
-#include <vector>
-#include <numeric>
-
-int main() {
-    std::vector<int> data = {1, 2, 3, 4, 5};
-    double mean = std::accumulate(data.begin(), data.end(), 0.0) / data.size();
-    std::cout << "Mean: " << mean << std::endl;
-    return 0;
-}
-`
+    python: ``,
+    r: ``,
+    cpp: ``
   }
 };
