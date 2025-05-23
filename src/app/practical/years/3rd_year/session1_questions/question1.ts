@@ -47,6 +47,7 @@ int main() {
     std::vector<int> data = {1, 2, 3, 4, 5};
     double mean = std::accumulate(data.begin(), data.end(), 0.0) / data.size();
     std::cout << "Mean: " << mean << std::endl;
+    std::cout<< "Hello, World!" << std::endl;
     return 0;
 }
 `
