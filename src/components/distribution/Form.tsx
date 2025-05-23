@@ -31,36 +31,36 @@ function DistributionForm({ onSubmit }: { onSubmit: (data: { mu: number; sigma: 
   }, [debouncedSubmit]);
 
   return (
-    <div className="flex items-center space-x-4 bg-gray-100 p-2 rounded-lg shadow-md">
+    <div className="flex items-center space-x-4 bg-[var(--card-bg)] p-2 rounded-lg shadow-md border border-[var(--card-border)]">
       <div className="flex items-center">
-        <label htmlFor="mu" className="font-medium text-gray-700 text-sm md:text-base mr-1">μ:</label>
+        <label htmlFor="mu" className="font-medium text-[var(--text-primary)] text-sm md:text-base mr-1">μ:</label>
         <input
           type="number"
           id="mu"
           value={mu}
           onChange={(e) => setMu(Number(e.target.value))}
-          className="border border-gray-300 rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="border border-[var(--border-color)] rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text-primary)]"
         />
       </div>
       <div className="flex items-center">
-        <label htmlFor="sigma" className="font-medium text-gray-700 text-sm md:text-base mr-1">σ:</label>
+        <label htmlFor="sigma" className="font-medium text-[var(--text-primary)] text-sm md:text-base mr-1">σ:</label>
         <input
           type="number"
           id="sigma"
           value={sigma}
           onChange={(e) => setSigma(Number(e.target.value) || 0.1)} // Prevent 0 or negative values
           min="0.1"
-          className="border border-gray-300 rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="border border-[var(--border-color)] rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text-primary)]"
         />
       </div>
       <div className="flex items-center">
-        <label htmlFor="x" className="font-medium text-gray-700 text-sm md:text-base mr-1">x:</label>
+        <label htmlFor="x" className="font-medium text-[var(--text-primary)] text-sm md:text-base mr-1">x:</label>
         <input
           type="number"
           id="x"
           value={x}
           onChange={(e) => setX(Number(e.target.value))}
-          className="border border-gray-300 rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="border border-[var(--border-color)] rounded-md p-1 text-sm md:text-base w-16 md:w-20 focus:outline-none focus:ring-1 focus:ring-[var(--accent)] bg-[var(--background)] text-[var(--text-primary)]"
         />
       </div>
     </div>

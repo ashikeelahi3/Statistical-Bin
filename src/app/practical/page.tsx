@@ -26,8 +26,6 @@ export default function PracticalPage() {
   // State for year and session selection
   const [selectedYearId, setSelectedYearId] = useState<string>(years[0].id);
   const [selectedSessionId, setSelectedSessionId] = useState<string>(years[0].sessions[0].id);
-  // const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  // const [showYoutubeVideo, setShowYoutubeVideo] = useState(false);
   
   // Find the selected year and session objects
   const selectedYear = years.find((y: any) => y.id === selectedYearId) || years[0];
@@ -44,6 +42,7 @@ export default function PracticalPage() {
   const [showExcelIframe, setShowExcelIframe] = useState<boolean>(false);
   const [showPdfIframe, setShowPdfIframe] = useState<boolean>(false);
   const [showSpssIframe, setShowSpssIframe] = useState<boolean>(false);
+  
   // Update selected question when year or session changes
   useEffect(() => {
     const questions = selectedSession.questions;
@@ -86,16 +85,17 @@ export default function PracticalPage() {
   };
 
   return (
-    <div className="container mx-auto px-3 sm:px-6 py-4 max-w-full sm:max-w-5xl">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Statistical Practice Questions</h1>      {/* Year selection */}
-      <div className="flex flex-wrap gap-2 mb-4">
+    <div className="container mx-auto px-3 sm:px-6 py-8 max-w-full sm:max-w-5xl relative bg-[var(--background)] text-[var(--text-primary)]">
+      <h1 className="text-3xl sm:text-4xl font-extrabold mb-8 text-[var(--accent)] tracking-tight">Statistical Practice Questions</h1>
+      {/* Year selection */}
+      <div className="flex flex-wrap gap-3 mb-6">
         {years.map((year: any) => (
           <button
             key={year.id}
-            className={`px-3 py-2 rounded text-sm ${
+            className={`px-4 py-2 rounded-lg text-base font-semibold border border-[var(--border-color)] shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 ${
               selectedYearId === year.id
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                ? 'bg-[var(--accent)] text-[var(--accent-foreground)] shadow-md'
+                : 'bg-[var(--card-bg)] text-[var(--text-primary)] hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)]'
             }`}
             onClick={() => {
               setSelectedYearId(year.id);
@@ -107,15 +107,16 @@ export default function PracticalPage() {
             {year.name}
           </button>
         ))}
-      </div>      {/* Session selection */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      </div>
+      {/* Session selection */}
+      <div className="flex flex-wrap gap-3 mb-8">
         {selectedYear.sessions.map((session: any) => (
           <button
             key={session.id}
-            className={`px-3 py-2 rounded text-sm ${
+            className={`px-4 py-2 rounded-lg text-base font-semibold border border-[var(--border-color)] shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 ${
               selectedSessionId === session.id
-                ? 'bg-green-600 text-white'
-                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+                ? 'bg-[var(--accent)] text-[var(--accent-foreground)] shadow-md'
+                : 'bg-[var(--card-bg)] text-[var(--text-primary)] hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)]'
             }`}
             onClick={() => setSelectedSessionId(session.id)}
           >
@@ -123,49 +124,47 @@ export default function PracticalPage() {
           </button>
         ))}
       </div>
-      
       {/* Question selection */}
-      <div className="mb-6">
-        <label className="block text-sm font-medium mb-2">Select a question:</label>
+      <div className="mb-8">
+        <label className="block text-base font-semibold mb-2 text-[var(--text-secondary)]">Select a question:</label>
         <select 
           title='question'
-          className="w-full p-2 border rounded"          value={selectedQuestionIndex}          onChange={(e) => handleQuestionChange(parseInt(e.target.value))}
+          className="w-full p-3 border rounded-lg border-[var(--border-color)] bg-[var(--card-bg)] text-[var(--text-primary)] shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
+          value={selectedQuestionIndex}
+          onChange={(e) => handleQuestionChange(parseInt(e.target.value))}
         >
           {sessionQuestions.map((q: any, index: number) => (
             <option key={q.id} value={index}>Question {q.id}</option>
           ))}
         </select>
       </div>
-      
       {/* Question display with LaTeX */}
-      <div className="bg-white p-4 rounded shadow mb-6">
-        <h2 className="text-xl font-semibold mb-2">Question {selectedQuestion.id}</h2>
-        <div className="question-text">
+      <div className="bg-[var(--card-bg)] p-6 rounded-2xl shadow-lg mb-8 border border-[var(--card-border)]">
+        <h2 className="text-2xl font-bold mb-3 text-[var(--accent)]">Question {selectedQuestion.id}</h2>
+        <div className="question-text mb-4 text-lg leading-relaxed">
           <Latex>{selectedQuestion.text}</Latex>
         </div>
         
         {/* Dataset display (like Excel sheet) */}
         {selectedQuestion.dataset && (
           <div className="mt-4">            <h3 className="text-lg font-medium mb-2">Dataset</h3>            {selectedQuestion.dataset.description && (
-              <p className="text-sm text-gray-600 mb-2">{selectedQuestion.dataset.description}</p>
+              <p className="text-sm text-[var(--text-secondary)] mb-2">{selectedQuestion.dataset.description}</p>
             )}
             <div className="overflow-x-auto -mx-4 sm:mx-0">
               <div className="inline-block min-w-full align-middle">
                 <table className="min-w-full border-collapse border border-gray-300">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 px-3 py-2 text-left text-xs sm:text-sm">#</th>
+                  <thead>                  <tr className="bg-[var(--card-bg)] border-b border-[var(--border-color)]">
+                      <th className="border border-[var(--border-color)] px-3 py-2 text-left text-xs sm:text-sm">#</th>
                       {selectedQuestion.dataset.headers.map((header, index) => (
-                        <th key={index} className="border border-gray-300 px-3 py-2 text-left text-xs sm:text-sm">{header}</th>
+                        <th key={index} className="border border-[var(--border-color)] px-3 py-2 text-left text-xs sm:text-sm">{header}</th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody>
-                    {selectedQuestion.dataset.rows.map((row, rowIndex) => (
-                      <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                        <td className="border border-gray-300 px-3 py-2 text-left font-medium text-xs sm:text-sm">{rowIndex + 1}</td>
+                  <tbody>                    {selectedQuestion.dataset.rows.map((row, rowIndex) => (
+                      <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-[var(--background)]' : 'bg-[var(--card-bg)]'}>
+                        <td className="border border-[var(--border-color)] px-3 py-2 text-left font-medium text-xs sm:text-sm">{rowIndex + 1}</td>
                         {row.map((cell, cellIndex) => (
-                          <td key={cellIndex} className="border border-gray-300 px-3 py-2 text-left text-xs sm:text-sm">{cell}</td>
+                          <td key={cellIndex} className="border border-[var(--border-color)] px-3 py-2 text-left text-xs sm:text-sm">{cell}</td>
                         ))}
                       </tr>
                     ))}
@@ -260,12 +259,11 @@ export default function PracticalPage() {
             </div>
             
             {/* Embeddable iframes for Excel/Sheets and PDF */}
-            {showExcelIframe && selectedQuestion.dataset.externalLink && (
-              <div className="mt-4">
-                <div className="bg-gray-200 p-1 rounded">
+            {showExcelIframe && selectedQuestion.dataset.externalLink && (              <div className="mt-4">
+                <div className="bg-[var(--card-bg)] p-1 rounded border border-[var(--border-color)]">
                   <div className="flex justify-between items-center mb-2 px-2">
-                    <h4 className="text-gray-700 font-medium">Spreadsheet Viewer</h4>                    <button 
-                      className="text-gray-500 hover:text-gray-700"
+                    <h4 className="text-[var(--text-primary)] font-medium">Spreadsheet Viewer</h4>                    <button 
+                      className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                       onClick={() => setShowExcelIframe(false)}
                       title="Close spreadsheet viewer"
                       aria-label="Close spreadsheet viewer"
@@ -286,12 +284,11 @@ export default function PracticalPage() {
               </div>
             )}
             
-            {showPdfIframe && selectedQuestion.dataset.pdfLink && (
-              <div className="mt-4">
-                <div className="bg-gray-200 p-1 rounded">
+            {showPdfIframe && selectedQuestion.dataset.pdfLink && (              <div className="mt-4">
+                <div className="bg-[var(--card-bg)] p-1 rounded border border-[var(--border-color)]">
                   <div className="flex justify-between items-center mb-2 px-2">
-                    <h4 className="text-gray-700 font-medium">PDF Viewer</h4>                    <button 
-                      className="text-gray-500 hover:text-gray-700"
+                    <h4 className="text-[var(--text-primary)] font-medium">PDF Viewer</h4>                    <button 
+                      className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                       onClick={() => setShowPdfIframe(false)}
                       title="Close PDF viewer"
                       aria-label="Close PDF viewer"
@@ -312,13 +309,12 @@ export default function PracticalPage() {
               </div>
             )}
             
-            {showSpssIframe && selectedQuestion.dataset.spssLink && (
-              <div className="mt-4">
-                <div className="bg-gray-200 p-1 rounded">
+            {showSpssIframe && selectedQuestion.dataset.spssLink && (              <div className="mt-4">
+                <div className="bg-[var(--card-bg)] p-1 rounded border border-[var(--border-color)]">
                   <div className="flex justify-between items-center mb-2 px-2">
-                    <h4 className="text-gray-700 font-medium">SPSS Data Viewer</h4>
+                    <h4 className="text-[var(--text-primary)] font-medium">SPSS Data Viewer</h4>
                     <button 
-                      className="text-gray-500 hover:text-gray-700"
+                      className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                       onClick={() => setShowSpssIframe(false)}
                       title="Close SPSS viewer"
                       aria-label="Close SPSS viewer"
@@ -341,23 +337,21 @@ export default function PracticalPage() {
           </div>
         )}
       </div>
-      
-      {/* Code display with language tabs */}
-      <div className="bg-white p-4 rounded shadow">
+        {/* Code display with language tabs */}
+      <div className="bg-[var(--card-bg)] p-4 rounded shadow border border-[var(--border-color)]">
         {/* Check if any code snippet languages are available */}
         {(!selectedQuestion.codeSnippets || 
           (!selectedQuestion.codeSnippets.python && 
            !selectedQuestion.codeSnippets.r && 
            !selectedQuestion.codeSnippets.cpp)) ? (
-          <div className="p-4 bg-gray-100 text-gray-600 rounded">
+          <div className="p-4 bg-[var(--background)] text-[var(--text-secondary)] rounded">
             No code snippets available for this question.
           </div>
         ) : (
-          <>
-                <div className="flex flex-wrap mb-4 gap-2">
+          <>                <div className="flex flex-wrap mb-4 gap-2">
                 {selectedQuestion.codeSnippets?.python && (
                   <button 
-                    className={`px-3 py-2 ${selectedLanguage === 'python' ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded`}
+                    className={`px-3 py-2 ${selectedLanguage === 'python' ? 'bg-[var(--accent)] text-[var(--accent-foreground)]' : 'bg-[var(--background)] text-[var(--text-primary)]'} rounded border border-[var(--border-color)]`}
                     onClick={() => setSelectedLanguage('python')}
                   >
                     Python
@@ -365,7 +359,7 @@ export default function PracticalPage() {
                 )}
                 {selectedQuestion.codeSnippets?.r && (
                   <button 
-                    className={`px-3 py-2 ${selectedLanguage === 'r' ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded`}
+                    className={`px-3 py-2 ${selectedLanguage === 'r' ? 'bg-[var(--accent)] text-[var(--accent-foreground)]' : 'bg-[var(--background)] text-[var(--text-primary)]'} rounded border border-[var(--border-color)]`}
                     onClick={() => setSelectedLanguage('r')}
                   >
                     R
@@ -373,7 +367,7 @@ export default function PracticalPage() {
                 )}
                 {selectedQuestion.codeSnippets?.cpp && (
                   <button 
-                    className={`px-3 py-2 ${selectedLanguage === 'cpp' ? 'bg-blue-500 text-white' : 'bg-gray-200'} rounded`}
+                    className={`px-3 py-2 ${selectedLanguage === 'cpp' ? 'bg-[var(--accent)] text-[var(--accent-foreground)]' : 'bg-[var(--background)] text-[var(--text-primary)]'} rounded border border-[var(--border-color)]`}
                     onClick={() => setSelectedLanguage('cpp')}
                   >
                     C/C++
@@ -384,11 +378,10 @@ export default function PracticalPage() {
             
             {/* Code snippet */}        
             <div className="bg-zinc-800 p-2 sm:p-4 rounded relative">
-              {/* Copy button overlay */}
-              <div className="absolute top-2 right-2 z-10">
+              {/* Copy button overlay */}              <div className="absolute top-2 right-2 z-10">
                 {selectedQuestion.codeSnippets && selectedQuestion.codeSnippets[selectedLanguage] && (
                   <button
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs flex items-center"
+                    className="bg-[var(--accent)] hover:bg-[var(--accent)] text-[var(--accent-foreground)] px-2 py-1 rounded text-xs flex items-center opacity-80 hover:opacity-100"
                     onClick={() => {
                       const codeText = selectedQuestion.codeSnippets[selectedLanguage];
                       if (codeText) {
@@ -414,8 +407,7 @@ export default function PracticalPage() {
                     )}
                   </button>
                 )}
-              </div>
-              {selectedQuestion.codeSnippets && selectedQuestion.codeSnippets[selectedLanguage] ? (
+              </div>              {selectedQuestion.codeSnippets && selectedQuestion.codeSnippets[selectedLanguage] ? (
                 <SyntaxHighlighter 
                   language={selectedLanguage}
                   style={ tomorrow }
@@ -434,7 +426,7 @@ export default function PracticalPage() {
                   {selectedQuestion.codeSnippets[selectedLanguage] || ''}
                 </SyntaxHighlighter>
               ) : (
-                <div className="text-gray-400 p-4 text-center">
+                <div className="text-[var(--text-secondary)] p-4 text-center">
                   No {selectedLanguage} code snippet available. Select another language.
                 </div>
               )}
