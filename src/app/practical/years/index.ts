@@ -8,19 +8,7 @@ import * as ThirdYear from './3rd_year/3rd_year';
 import * as FourthYear from './4th_year/4th_year';
 // import * as FinalYear from './final_year/final_year';
 
-// Structure to organize years and sessions
-export interface YearData {
-  id: string;
-  name: string;
-  sessions: SessionData[];
-  allQuestions?: Question[]; // All questions from all sessions combined
-}
-
-export interface SessionData {
-  id: string;
-  name: string;
-  questions: Question[];
-}
+import { YearData, SessionData } from '@/app/practical/types';
 
 // Define all available years and their sessions
 export const years: YearData[] = [  {    id: '1st_year',

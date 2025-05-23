@@ -36,6 +36,20 @@ export interface NotebookJSON {
 }
 
 
+// Structure to organize years and sessions
+export interface YearData {
+  id: string;
+  name: string;
+  sessions: SessionData[];
+  allQuestions?: Question[]; // All questions from all sessions combined
+}
+
+export interface SessionData {
+  id: string;
+  name: string;
+  questions: Question[];
+}
+
 // Sample question data structure for statistical practice questions
 export interface CodeSnippets {
   python?: string;
@@ -50,6 +64,13 @@ export interface Question {
     python?: string;
     r?: string;
     cpp?: string; // Link for C/C++ code in a code viewer
+  };
+  youTubeLink: {
+    python?: string;
+    r?: string;
+    cpp?: string;
+    spss?: string;
+    excel?: string;
   };
   codeSnippets: CodeSnippets;  dataset?: {
     headers: string[];

@@ -8,7 +8,14 @@ export const question: Question = {
     python: "https://colab.research.google.com/drive/1DOpDfqVIy9Bme4y7_ymjTD7fsGtFYOz5?usp=sharing",
     r: "https://rstudio.cloud/project/1234567",
     cpp: "https://godbolt.org/z/4MGT3jMnK"
-  },  dataset: {
+  },
+  youTubeLink: {
+    python: "",
+    r: "",
+    cpp: "",
+    spss: ""
+  },
+  dataset: {
     headers: ["Value", "Squared", "Cubed"],
     rows: [
       [1, 1, 1],
