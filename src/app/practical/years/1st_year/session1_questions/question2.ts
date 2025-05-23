@@ -9,6 +9,13 @@ export const question: Question = {
     r: "https://rstudio.cloud/project/7654321",
     cpp: "https://godbolt.org/z/5MGT3jMnK"
   },
+  youTubeLink: {
+    r: "",
+    python: "https://youtu.be/bVP8AsD6KSY?si=mtHemEEE0XIXxZaK",
+    cpp:"",
+    spss: "https://youtu.be/HUeg53G8FVg?si=knA7TsXBR_4OQjhC",
+    excel: "https://youtu.be/kLEX4nk5Nrk?si=oiuH-ffaZUGONSxH"
+  },
   dataset: {
     headers: ["Value"],
     rows: [
