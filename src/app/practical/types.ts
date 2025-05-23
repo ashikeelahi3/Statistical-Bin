@@ -72,7 +72,9 @@ export interface Question {
     spss?: string;
     excel?: string;
   };
-  codeSnippets: CodeSnippets;  dataset?: {
+  codeSnippets: CodeSnippets;  
+  
+  dataset?: {
     headers: string[];
     rows: (string | number)[][];
     description?: string;

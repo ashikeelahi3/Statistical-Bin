@@ -76,6 +76,11 @@ export const years: YearData[] = [  {    id: '1st_year',
         id: 'session3',
         name: 'Session 3',
         questions: ThirdYear.session3Questions
+      },
+      {
+        id: 'session4',
+        name: 'Session 4',
+        questions: ThirdYear.session4Questions
       }
       // Add more sessions as needed
     ]
