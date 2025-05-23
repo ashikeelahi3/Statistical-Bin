@@ -104,31 +104,28 @@ export default function Navbar() {
           </div>
           
           <div className="flex items-center space-x-3">
-            <SignedOut>
-              <SignInButton>
-                <button className="px-3 py-1.5 text-sm font-medium border border-[var(--accent)] text-[var(--accent)] rounded-md hover:bg-[var(--card-bg)] hover:text-[var(--accent)]">
-                  Sign In
-                </button>
-              </SignInButton>
-              <SignUpButton>
-                <button className="px-3 py-1.5 text-sm font-medium bg-[var(--accent)] text-[var(--accent-foreground)] rounded-md hover:bg-blue-700">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
+            <div className="hidden md:block">
+                <SignedOut>
+                <SignInButton>
+                  <button className="px-3 py-1.5 text-sm font-medium border border-[var(--accent)] text-[var(--accent)] rounded-md hover:bg-[var(--card-bg)] hover:text-[var(--accent)]">
+                    Sign In
+                  </button>
+                </SignInButton>
+              </SignedOut>
+            </div>
             <SignedIn>
               <UserButton />
             </SignedIn>
             {/* Dark mode toggle button */}
             <button
-              className="ml-2 bg-[var(--card-bg)] text-[var(--text-primary)] px-3 py-2 rounded shadow hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] transition-colors border border-[var(--border-color)]"
+              className="ml-1 text-[var(--text-primary)] rounded hover:text-indigo-500 transition-colors"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               onClick={handleThemeToggle}
             >
               {theme === 'dark' ? (
-                <span className="flex items-center"><svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>Light</span>
+                <span className="flex items-center"><svg className="w-5 h-5 mr-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 5.66l-.71-.71M4.05 4.93l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg></span>
               ) : (
-                <span className="flex items-center"><svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>Dark</span>
+                <span className="flex items-center"><svg className="w-5 h-5 mr-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg></span>
               )}
             </button>
             
@@ -147,8 +144,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
-      {/* Mobile menu, show/hide based on menu state */}
+        {/* Mobile menu, show/hide based on menu state */}
       <div className={`sm:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => {
@@ -168,6 +164,22 @@ export default function Navbar() {
               </Link>
             );
           })}
+          
+          {/* Auth buttons for mobile */}
+          <div className="mt-4 pt-4 border-t border-[var(--border-color)]">
+            <SignedOut>
+              <div className="flex flex-col space-y-2">
+                <SignInButton>
+                  <button 
+                    className="w-full px-3 py-2 text-base font-medium border border-[var(--accent)] text-[var(--accent)] rounded-md hover:bg-[var(--card-bg)]"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sign In
+                  </button>
+                </SignInButton>
+              </div>
+            </SignedOut>
+          </div>
         </div>
       </div>
     </nav>
