@@ -104,7 +104,7 @@ export default function Navbar() {
           </div>
           
           <div className="flex items-center space-x-3">
-            <div className="hidden md:block">
+            <div className="hidden sm:block">
                 <SignedOut>
                 <SignInButton>
                   <button className="px-3 py-1.5 text-sm font-medium border border-[var(--accent)] text-[var(--accent)] rounded-md hover:bg-[var(--card-bg)] hover:text-[var(--accent)]">
