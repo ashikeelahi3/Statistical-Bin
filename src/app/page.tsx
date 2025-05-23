@@ -34,9 +34,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col relative min-h-screen pb-16">
+    <div className="flex flex-col relative min-h-screen pb-16 bg-[var(--background)] text-[var(--text-primary)]">
       <div className="flex-1 w-full flex items-center justify-center overflow-y-auto p-4">
-        <div className="w-full max-w-5xl">
+        <div className="w-full max-w-5xl bg-[var(--card-bg)] border border-[var(--card-border)] rounded shadow">
           <MemoizedVisualization 
             {...formData} 
             onXChange={handleXChange}
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.1)] p-3 z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-[var(--card-bg)] border-t border-[var(--card-border)] shadow-[0_-2px_10px_rgba(0,0,0,0.1)] p-3 z-10">
         <div className="max-w-5xl mx-auto">
           <DistributionForm onSubmit={handleFormUpdate} />
         </div>

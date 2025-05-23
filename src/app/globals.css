@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #171717;
+  --text-secondary: #444444;
+  --border-color: #e5e7eb;
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+  --card-bg: #f9f9f9;
+  --card-border: #e5e7eb;
 }
 
 @theme inline {
@@ -16,11 +23,53 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --text-primary: #f3f4f6;
+    --text-secondary: #a3a3a3;
+    --border-color: #333333;
+    --accent: #60a5fa;
+    --accent-foreground: #171717;
+    --card-bg: #18181b;
+    --card-border: #333333;
   }
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --text-primary: #f3f4f6;
+  --text-secondary: #a3a3a3;
+  --border-color: #333333;
+  --accent: #60a5fa;
+  --accent-foreground: #171717;
+  --card-bg: #18181b;
+  --card-border: #333333;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.border {
+  border-color: var(--border-color);
+}
+
+.accent {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
