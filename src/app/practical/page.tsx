@@ -17,6 +17,7 @@ import QuestionDisplay from './components/QuestionDisplay';
 import QuestionContent from './components/QuestionContent';
 import CodeSnippetDisplay from './components/CodeSnippetDisplay';
 import ToastNotification from './components/ToastNotification';
+import YouTubePlayer from './components/YouTubePlayer';
 
 // Main component for the practical questions page
 export default function PracticalPage() {
@@ -122,8 +123,7 @@ export default function PracticalPage() {
           />
         )}
       </div>
-      
-      {/* Code display with language tabs */}
+        {/* Code display with language tabs */}
       <div className="bg-[var(--card-bg)] p-4 rounded shadow border border-[var(--border-color)]">
         <CodeSnippetDisplay 
           selectedQuestion={selectedQuestion}
@@ -137,6 +137,14 @@ export default function PracticalPage() {
           message={copySuccess}
         />
       </div>
+
+      {/* YouTube video player */}
+      {selectedQuestion.youTubeLink && (
+        <YouTubePlayer
+          selectedQuestion={selectedQuestion}
+          selectedLanguage={selectedLanguage}
+        />
+      )}
     </div>
   )
 }

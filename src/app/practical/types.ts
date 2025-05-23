@@ -65,6 +65,13 @@ export interface Question {
     r?: string;
     cpp?: string; // Link for C/C++ code in a code viewer
   };
+  youTubeLink: {
+    python?: string;
+    r?: string;
+    cpp?: string;
+    spss?: string;
+    excel?: string;
+  };
   codeSnippets: CodeSnippets;  dataset?: {
     headers: string[];
     rows: (string | number)[][];
