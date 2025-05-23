@@ -3,7 +3,7 @@ import { Question } from '@/app/practical/types';
 // Question 1 for 3rd year, session1
 export const question: Question = {
   id: 1,
-  text: "3rd year, session1: [YOUR QUESTION TEXT HERE]",
+  text: "3rd year, session1: [Ekhane code lekha hbe]",
   colabLinks: {
     python: "https://colab.research.google.com/drive/your-python-link",
     r: "https://rstudio.cloud/project/your-r-link",
@@ -47,6 +47,7 @@ int main() {
     std::vector<int> data = {1, 2, 3, 4, 5};
     double mean = std::accumulate(data.begin(), data.end(), 0.0) / data.size();
     std::cout << "Mean: " << mean << std::endl;
+    std::cout<< "Hello, World!" << std::endl;
     return 0;
 }
 `
