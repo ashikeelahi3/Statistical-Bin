@@ -9,6 +9,13 @@ export const question: Question = {
     r: "https://rstudio.cloud/project/example-ttest-r",
     cpp: "https://godbolt.org/example-ttest-cpp"
   },
+  youTubeLink: {
+    r: "",
+    python: "https://youtu.be/bVP8AsD6KSY?si=mtHemEEE0XIXxZaK",
+    cpp:"",
+    spss: "https://youtu.be/HUeg53G8FVg?si=knA7TsXBR_4OQjhC",
+    excel: "https://youtu.be/kLEX4nk5Nrk?si=oiuH-ffaZUGONSxH"
+  },
   dataset: {
     headers: ["Group A", "Group B"],
     rows: [

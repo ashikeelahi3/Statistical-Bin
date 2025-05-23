@@ -3,7 +3,7 @@ import { Question } from '@/app/practical/types';
 // Question 1 for 3rd year, session1
 export const question: Question = {
   id: 1,
-  text: "3rd year, session1: [YOUR QUESTION TEXT HERE]",
+  text: "3rd year, session1: [Ekhane code lekha hbe]",
   colabLinks: {
     python: "https://colab.research.google.com/drive/your-python-link",
     r: "https://rstudio.cloud/project/your-r-link",
