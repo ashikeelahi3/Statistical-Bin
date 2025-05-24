@@ -67,7 +67,7 @@ export const question: Question = {
     ],
     description: "Dataset containing information on early termination from counseling for 45 clients, including symptom severity, gender, and wealth index.",
     pdfLink: "",
-    spssLink: ""
+    spssLink: "https://drive.google.com/file/d/1o-nom7wX5ujRvuDX5yRjr-JSJwliUvNG/view?usp=drive_link"
   },
   codeSnippets: {
     python: ``,
