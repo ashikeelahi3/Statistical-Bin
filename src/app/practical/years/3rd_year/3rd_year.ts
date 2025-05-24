@@ -17,8 +17,12 @@ import { question as session3Question3 } from './session3_questions/question3';
 
 // Import all question modules from session4
 import { question as session4Question1 } from './session4_questions/question1';
-// import { question as session4Question2 } from './session4_questions/question2';
+import { question as session4Question2 } from './session4_questions/question2';
 import { question as session4Question3 } from './session4_questions/question3';
+import { question as session4Question4 } from './session4_questions/question4';
+import { question as session4Question5 } from './session4_questions/question5';
+import { question as session4Question6 } from './session4_questions/question6';
+import { question as session4Question7 } from './session4_questions/question7';
 
 // Group questions by session
 export const session1Questions: Question[] = [
@@ -39,8 +43,12 @@ export const session3Questions: Question[] = [
 
 export const session4Questions: Question[] = [
   session4Question1,
-  // session4Question2,
+  session4Question2,
   session4Question3,
+  session4Question4,
+  session4Question5,
+  session4Question6,
+  session4Question7,
 ]
 
 // Combine all questions into a single array
