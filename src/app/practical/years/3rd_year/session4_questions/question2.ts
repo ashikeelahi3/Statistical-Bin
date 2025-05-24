@@ -13,7 +13,7 @@ export const question: Question = {
     r: "",
     python: "",
     cpp:"",
-    spss: "",
+    spss: "https://youtu.be/Azk027t7ltc",
     excel: ""
   },
   dataset: {
@@ -21,7 +21,7 @@ export const question: Question = {
     rows: [],
     description: "Use default dataset",
     pdfLink: "",
-    spssLink: ""
+    spssLink: "https://drive.google.com/file/d/1Pwjoif-H3ZHPW0c49vjcc6PT9ie0ecLX/view?usp=drive_link"
   },
   codeSnippets: {
     python: ``,
