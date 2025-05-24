@@ -3,7 +3,7 @@ import { Question } from '@/app/practical/types';
 // Question 4 for 3rd year, session4
 export const question: Question = {
   id: 4,
-  text: "<ol><li>Fit a linear regression model of Y on X.</li>    <li>Draw a scatter plot of X and Y to identify unusual observations.</li><li>Repeat analysis after changing the 9th Y value from 79.24 to 65.24.</li><li>Repeat analysis with additional modifications: 9th Y to 65.24, 22nd Y to 35.32, and 22nd X to 610.</li><li>Identify influential observations, high leverage points, and outliers.</li><li>Summarize findings and compare results across different model versions.</li></ol>",
+  text: "<p><ol><li>Fit a linear regression model of Y on X.</li>    <li>Draw a scatter plot of X and Y to identify unusual observations.</li><li>Repeat analysis after changing the 9th Y value from 79.24 to 65.24.</li><li>Repeat analysis with additional modifications: 9th Y to 65.24, 22nd Y to 35.32, and 22nd X to 610.</li><li>Identify influential observations, high leverage points, and outliers.</li><li>Summarize findings and compare results across different model versions.</li></ol></p>",
     colabLinks: {
     python: "",
     r: "",
@@ -17,7 +17,7 @@ export const question: Question = {
     excel: ""
   },
   dataset: {
-    headers: ["Delivery time<br/><i>Minutes</i> (Y)", "Distance<br/><i>Feet</i> (X)"],
+    headers: ["Delivery time Minutes (Y)", "Distance Feet (X)"],
     rows: [
       [16.68, 560],
       [11.50, 220],

@@ -10,7 +10,7 @@ export const question: Question = {
     cpp: ""
   },
   youTubeLink: {
-    r: "",
+    r: "https://youtu.be/7MPWQvqU778",
     python: "",
     cpp:"",
     spss: "",
